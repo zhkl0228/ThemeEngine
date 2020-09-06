@@ -17,5 +17,6 @@
 #import <CoreUI/Renditions/_CUIThemeEffectRendition.h>
 #import <CoreUI/Renditions/_CUIThemeGradientRendition.h>
 #import <CoreUI/Renditions/_CUIThemePixelRendition.h>
+#import <CoreUI/Renditions/_CUIThemeSVGRendition.h>
 
 #endif /* CUIRenditions_h */

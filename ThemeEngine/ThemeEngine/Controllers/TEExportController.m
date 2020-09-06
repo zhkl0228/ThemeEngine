@@ -9,6 +9,7 @@
 #import "TEExportController.h"
 #import <ThemeKit/TKBitmapRendition.h>
 #import <ThemeKit/TKPDFRendition.h>
+#import <ThemeKit/TKSVGRendition.h>
 
 #import "NSAppleScript+Functions.h"
 #import "NSURL+Paths.h"
@@ -81,6 +82,21 @@
                  additionalEventParamDescriptor:nil
                               launchIdentifiers:nil];
         
+    } else if ([rendition isKindOfClass:[TKSVGRendition class]]) {
+        NSMutableArray *urls = [NSMutableArray array];
+        for (TKPDFRendition *rend in renditions) {
+            NSURL *url = [tmpURL URLByAppendingPathComponent:[[[NSUUID UUID] UUIDString] stringByAppendingString:@"svg"]];
+            //NSData *d2 = [wholeData subdataWithRange:NSMakeRange(17, wholeData.length - 17)];
+            NSData *svgData = [rend.rawData subdataWithRange:NSMakeRange(0x11E, rend.rawData.length - 0x11E)];
+            [rend.rawData writeToURL:url atomically:NO];
+            [urls addObject:url];
+        }
+        
+        [[NSWorkspace sharedWorkspace] openURLs:urls
+                        withAppBundleIdentifier:@"com.adobe.illustrator"
+                                        options:NSWorkspaceLaunchDefault
+                 additionalEventParamDescriptor:nil
+                              launchIdentifiers:nil];
     } else {
         NSLog(@"no rule to export");
     }
@@ -149,7 +165,7 @@
                 }
                 
                 NSBitmapImageRep *image = [[NSBitmapImageRep alloc] initWithCGImage:slice];
-                [[image representationUsingType:NSPNGFileType properties:@{}] writeToFile:[@"/Users/Alex/Desktop/slices" stringByAppendingFormat:@"/%ld.png", (long)i] atomically:NO];
+                [[image representationUsingType:NSBitmapImageFileTypePNG properties:@{}] writeToFile:[@"/Users/Alex/Desktop/slices" stringByAppendingFormat:@"/%ld.png", (long)i] atomically:NO];
                 [rend setValue:image forKey:@"image"];
                 CGImageRelease(slice);
             }
@@ -175,6 +191,35 @@
         NSAppleScript *script      = [[NSAppleScript alloc] initWithSource:scriptText];
         
         NSURL *dst    = [[tmpURL URLByAppendingPathComponent:[[NSUUID UUID] UUIDString]] URLByAppendingPathExtension:@"pdf"];
+        NSString *rtn = [script executeFunction:TEAppleScriptExportFunctionName
+                                  withArguments:@[ dst.path ]
+                                          error:nil];
+        NSData *d     = [NSData dataWithContentsOfURL:dst];
+        
+        if (d) {
+            [renditions makeObjectsPerformSelector:@selector(setRawData:) withObject:d];
+        }
+        
+        if (rtn) {
+            NSLog(@"%@", rtn);
+        }
+    } else if ([rendition isKindOfClass:[TKSVGRendition class]]) {
+        NSDataAsset *asset         = [[NSDataAsset alloc] initWithName:@"ApplescriptReceiveFromIllustrator"];
+        NSData *data               = asset.data;
+        NSString *format           = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+
+        NSRunningApplication *bndl = [NSRunningApplication runningApplicationsWithBundleIdentifier:@"com.adobe.illustrator"].firstObject;
+        
+        if (!bndl) {
+            NSLog(@"illustrator is not running");
+            return;
+        }
+        
+        NSString *name             = bndl.bundleURL.lastPathComponent.stringByDeletingPathExtension;
+        NSString *scriptText       = [NSString stringWithFormat:format, name, name];
+        NSAppleScript *script      = [[NSAppleScript alloc] initWithSource:scriptText];
+        
+        NSURL *dst    = [[tmpURL URLByAppendingPathComponent:[[NSUUID UUID] UUIDString]] URLByAppendingPathExtension:@"svg"];
         NSString *rtn = [script executeFunction:TEAppleScriptExportFunctionName
                                   withArguments:@[ dst.path ]
                                           error:nil];
@@ -247,7 +292,7 @@
         // Enumerate in reverse order
         [rep drawInRect:bounds
                fromRect:NSZeroRect
-              operation:NSCompositeSourceOver
+              operation:NSCompositingOperationSourceOver
                fraction:1.0
          respectFlipped:NO
                   hints:nil];

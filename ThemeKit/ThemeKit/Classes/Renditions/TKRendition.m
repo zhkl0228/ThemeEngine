@@ -17,6 +17,7 @@
 #import "TKRawDataRendition.h"
 #import "TKPDFRendition.h"
 #import "TKRawPixelRendition.h"
+#import "TKSVGRendition.h"
 
 #import <CoreUI/Renditions/CUIRenditions.h>
 #import <objc/objc.h>
@@ -66,6 +67,8 @@ static const void *TKRenditionChangeContext = &TKRenditionChangeContext;
         return [TKRawDataRendition class];
     } else if ([rendition isKindOfClass:TKClass(_CUIRawPixelRendition)]) {
         return [TKRawPixelRendition class];
+    } else if ([rendition isKindOfClass:TKClass(_CUIThemeSVGRendition)]) {
+        return [TKSVGRendition class];
     }
     
     NSLog(@"Unknown class for rendition: %@", rendition);
