@@ -12,6 +12,8 @@
 #import <CoreUI/CUIMutableCommonAssetStorage.h>
 #import <CoreUI/CUIThemeRendition.h>
 
+#import <SymRez.h>
+
 #import "TKRendition+Private.h"
 #import "TKElement+Private.h"
 
@@ -19,6 +21,9 @@
 
 extern NSInteger kCoreThemeStepperElementID;
 NSString *const TKAssetStorageDidFinishLoadingNotification = @"TKAssetStorageDidFinishLoadingNotification";
+
+BOMTreeIteratorRef (*CUIBOMTreeIteratorNew)(BOMTreeRef, int, int, int);
+void (*CUIBOMTreeIteratorFree)(BOMTreeIteratorRef);
 
 @interface TKAssetStorage ()
 @property (readwrite, strong) NSSet<TKElement *> *elements;
@@ -81,7 +86,7 @@ NSString *const TKAssetStorageDidFinishLoadingNotification = @"TKAssetStorageDid
     
     __weak typeof(self) weakSelf = self;
     [self.queue addOperationWithBlock:^{
-        //[weakSelf _enumerateFacets]; // Causes a crash on Catalina.
+        [weakSelf _enumerateFacets];
         [weakSelf _enumerateAssets];
         [weakSelf _enumerateColors];
         [weakSelf _enumerateFonts];
@@ -106,7 +111,7 @@ NSString *const TKAssetStorageDidFinishLoadingNotification = @"TKAssetStorageDid
     if (num_facets == 0)
         return;
     
-    BOMTreeIteratorRef iterator = BOMTreeIteratorNew(facet_tree, 0, 0, 0);
+    BOMTreeIteratorRef iterator = CUIBOMTreeIteratorNew(facet_tree, 0, 0, 0);
     
     while (!BOMTreeIteratorIsAtEnd(iterator)) {
         struct facet_key *key = BOMTreeIteratorKey(iterator);
@@ -122,7 +127,7 @@ NSString *const TKAssetStorageDidFinishLoadingNotification = @"TKAssetStorageDid
         
         BOMTreeIteratorNext(iterator);
     }
-    BOMTreeIteratorFree(iterator);
+    CUIBOMTreeIteratorFree(iterator);
 }
 
 - (void)_enumerateAssets {
@@ -288,6 +293,12 @@ NSString *const TKAssetStorageDidFinishLoadingNotification = @"TKAssetStorageDid
     else {
         NSLog(@"Failed to add rendition: %@", rendition);
     }
+}
+
++ (void)load {
+    symrez_t sr_coreui = symrez_new("CoreUI");
+    CUIBOMTreeIteratorNew = sr_resolve_symbol(sr_coreui, "_BOMTreeIteratorNew");
+    CUIBOMTreeIteratorFree = sr_resolve_symbol(sr_coreui, "_BOMTreeIteratorFree");
 }
 
 @end
