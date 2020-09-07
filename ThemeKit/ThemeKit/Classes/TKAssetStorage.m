@@ -23,7 +23,9 @@ extern NSInteger kCoreThemeStepperElementID;
 NSString *const TKAssetStorageDidFinishLoadingNotification = @"TKAssetStorageDidFinishLoadingNotification";
 
 BOMTreeIteratorRef (*CUIBOMTreeIteratorNew)(BOMTreeRef, int, int, int);
+void (*CUIBOMTreeIteratorNext)(BOMTreeIteratorRef);
 void (*CUIBOMTreeIteratorFree)(BOMTreeIteratorRef);
+BOOL (*CUIBOMTreeIteratorIsAtEnd)(BOMTreeIteratorRef iterator);
 
 @interface TKAssetStorage ()
 @property (readwrite, strong) NSSet<TKElement *> *elements;
@@ -113,7 +115,7 @@ void (*CUIBOMTreeIteratorFree)(BOMTreeIteratorRef);
     
     BOMTreeIteratorRef iterator = CUIBOMTreeIteratorNew(facet_tree, 0, 0, 0);
     
-    while (!BOMTreeIteratorIsAtEnd(iterator)) {
+    while (!CUIBOMTreeIteratorIsAtEnd(iterator)) {
         struct facet_key *key = BOMTreeIteratorKey(iterator);
         size_t key_size = BOMTreeIteratorKeySize(iterator);
         
@@ -125,7 +127,7 @@ void (*CUIBOMTreeIteratorFree)(BOMTreeIteratorRef);
         (void)[self elementWithName:facetName createIfNeeded:YES];
         
         
-        BOMTreeIteratorNext(iterator);
+        CUIBOMTreeIteratorNext(iterator);
     }
     CUIBOMTreeIteratorFree(iterator);
 }
@@ -298,6 +300,8 @@ void (*CUIBOMTreeIteratorFree)(BOMTreeIteratorRef);
 + (void)load {
     symrez_t sr_coreui = symrez_new("CoreUI");
     CUIBOMTreeIteratorNew = sr_resolve_symbol(sr_coreui, "_BOMTreeIteratorNew");
+    CUIBOMTreeIteratorNext = sr_resolve_symbol(sr_coreui, "_BOMTreeIteratorNext");
+    CUIBOMTreeIteratorIsAtEnd = sr_resolve_symbol(sr_coreui, "_BOMTreeIteratorIsAtEnd");
     CUIBOMTreeIteratorFree = sr_resolve_symbol(sr_coreui, "_BOMTreeIteratorFree");
 }
 
