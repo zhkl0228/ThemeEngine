@@ -24,8 +24,10 @@ NSString *const TKAssetStorageDidFinishLoadingNotification = @"TKAssetStorageDid
 
 BOMTreeIteratorRef (*CUIBOMTreeIteratorNew)(BOMTreeRef, int, int, int);
 void (*CUIBOMTreeIteratorNext)(BOMTreeIteratorRef);
+void *(*CUIBOMTreeIteratorKey)(BOMTreeIteratorRef);
+size_t (*CUIBOMTreeIteratorKeySize)(BOMTreeIteratorRef);
 void (*CUIBOMTreeIteratorFree)(BOMTreeIteratorRef);
-BOOL (*CUIBOMTreeIteratorIsAtEnd)(BOMTreeIteratorRef iterator);
+BOOL (*CUIBOMTreeIteratorIsAtEnd)(BOMTreeIteratorRef);
 
 @interface TKAssetStorage ()
 @property (readwrite, strong) NSSet<TKElement *> *elements;
@@ -116,8 +118,8 @@ BOOL (*CUIBOMTreeIteratorIsAtEnd)(BOMTreeIteratorRef iterator);
     BOMTreeIteratorRef iterator = CUIBOMTreeIteratorNew(facet_tree, 0, 0, 0);
     
     while (!CUIBOMTreeIteratorIsAtEnd(iterator)) {
-        struct facet_key *key = BOMTreeIteratorKey(iterator);
-        size_t key_size = BOMTreeIteratorKeySize(iterator);
+        struct facet_key *key = CUIBOMTreeIteratorKey(iterator);
+        size_t key_size = CUIBOMTreeIteratorKeySize(iterator);
         
         // We only care about the key
         NSData *keyData     = [NSData dataWithBytes:key length:key_size];
@@ -301,6 +303,8 @@ BOOL (*CUIBOMTreeIteratorIsAtEnd)(BOMTreeIteratorRef iterator);
     symrez_t sr_coreui = symrez_new("CoreUI");
     CUIBOMTreeIteratorNew = sr_resolve_symbol(sr_coreui, "_BOMTreeIteratorNew");
     CUIBOMTreeIteratorNext = sr_resolve_symbol(sr_coreui, "_BOMTreeIteratorNext");
+    CUIBOMTreeIteratorKey = sr_resolve_symbol(sr_coreui, "_BOMTreeIteratorKey");
+    CUIBOMTreeIteratorKeySize = sr_resolve_symbol(sr_coreui, "_BOMTreeIteratorKeySize");
     CUIBOMTreeIteratorIsAtEnd = sr_resolve_symbol(sr_coreui, "_BOMTreeIteratorIsAtEnd");
     CUIBOMTreeIteratorFree = sr_resolve_symbol(sr_coreui, "_BOMTreeIteratorFree");
 }

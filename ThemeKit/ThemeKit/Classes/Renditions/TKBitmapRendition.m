@@ -126,7 +126,6 @@
     if (self.layout == CoreThemeLayoutInternalLink) {
         self.layout = self.rendition.subtype;
     }
-
     
     CSIGenerator *gen = [[CSIGenerator alloc] initWithCanvasSize:CGSizeMake(self.image.pixelsWide, self.image.pixelsHigh)
                                                       sliceCount:(unsigned int)self.layoutInformation.sliceRects.count
