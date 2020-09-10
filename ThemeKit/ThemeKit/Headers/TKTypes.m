@@ -52,6 +52,7 @@ NSString *CoreThemeTypeToString(CoreThemeType value) {
     STRINGIFY(CoreThemeTypeRawData)
     STRINGIFY(CoreThemeTypeColor)
     STRINGIFY(CoreThemeTypeAssetPack)
+    STRINGIFY(CoreThemeTypeSVG)
     ENDSTRINGIFY
 }
 

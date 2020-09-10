@@ -160,7 +160,7 @@ typedef NS_ENUM(NSUInteger, CoreThemeType) {
     CoreThemeTypePDF                 = 9,
     
     CoreThemeTypeRawData             = 1000, // used for layer stacks
-    
+    CoreThemeTypeSVG                 = 1017,
     CoreThemeTypeColor               = -1001, // This is a fake type
     CoreThemeTypeAssetPack           = 1004  // ZZZPackedAssets-1.0.0/2.0.0 I've seen subtype 10
 };

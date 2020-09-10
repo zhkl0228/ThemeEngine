@@ -9,8 +9,9 @@
 /* Begin PBXBuildFile section */
 		09CE0B8B25045182007281AF /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09CE0B8A25045182007281AF /* AppKit.framework */; };
 		09CE0B902504793D007281AF /* _CUIThemeSVGRendition.h in Headers */ = {isa = PBXBuildFile; fileRef = 09CE0B8F2504793D007281AF /* _CUIThemeSVGRendition.h */; };
-		09CE0B9325047988007281AF /* TKSVGRendition.h in Headers */ = {isa = PBXBuildFile; fileRef = 09CE0B9125047988007281AF /* TKSVGRendition.h */; };
-		09CE0B9425047988007281AF /* TKSVGRendition.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CE0B9225047988007281AF /* TKSVGRendition.m */; };
+		09D0CCC32509C0FA00A1DCE5 /* PDFKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09D0CCC22509C0FA00A1DCE5 /* PDFKit.framework */; };
+		09F90B70250A95970053D4C1 /* TKSVGRendition.h in Headers */ = {isa = PBXBuildFile; fileRef = 09F90B6E250A95960053D4C1 /* TKSVGRendition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		09F90B71250A95970053D4C1 /* TKSVGRendition.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F90B6F250A95970053D4C1 /* TKSVGRendition.m */; };
 		09FF665C2504839B0018AB6B /* SymRez.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FF665A2504839B0018AB6B /* SymRez.m */; };
 		09FF665D2504839B0018AB6B /* SymRez.h in Headers */ = {isa = PBXBuildFile; fileRef = 09FF665B2504839B0018AB6B /* SymRez.h */; };
 		FA092C841B2C1C7600D04F6D /* ThemeKit.h in Headers */ = {isa = PBXBuildFile; fileRef = FA092C831B2C1C7600D04F6D /* ThemeKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -107,8 +108,9 @@
 /* Begin PBXFileReference section */
 		09CE0B8A25045182007281AF /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		09CE0B8F2504793D007281AF /* _CUIThemeSVGRendition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _CUIThemeSVGRendition.h; path = Renditions/_CUIThemeSVGRendition.h; sourceTree = "<group>"; };
-		09CE0B9125047988007281AF /* TKSVGRendition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKSVGRendition.h; sourceTree = "<group>"; };
-		09CE0B9225047988007281AF /* TKSVGRendition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKSVGRendition.m; sourceTree = "<group>"; };
+		09D0CCC22509C0FA00A1DCE5 /* PDFKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PDFKit.framework; path = System/Library/Frameworks/PDFKit.framework; sourceTree = SDKROOT; };
+		09F90B6E250A95960053D4C1 /* TKSVGRendition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TKSVGRendition.h; path = Classes/Renditions/TKSVGRendition.h; sourceTree = "<group>"; };
+		09F90B6F250A95970053D4C1 /* TKSVGRendition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TKSVGRendition.m; path = Classes/Renditions/TKSVGRendition.m; sourceTree = "<group>"; };
 		09FF665A2504839B0018AB6B /* SymRez.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SymRez.m; path = SymRez/SymRez.m; sourceTree = "<group>"; };
 		09FF665B2504839B0018AB6B /* SymRez.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SymRez.h; path = SymRez/SymRez.h; sourceTree = "<group>"; };
 		FA092C7E1B2C1C7600D04F6D /* ThemeKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ThemeKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -211,6 +213,7 @@
 			files = (
 				09CE0B8B25045182007281AF /* AppKit.framework in Frameworks */,
 				FA606C2A1B2C1D5000F24960 /* CoreUI.framework in Frameworks */,
+				09D0CCC32509C0FA00A1DCE5 /* PDFKit.framework in Frameworks */,
 				FA606C621B2C958400F24960 /* Bom.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -221,6 +224,7 @@
 		09CE0B8925045182007281AF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				09D0CCC22509C0FA00A1DCE5 /* PDFKit.framework */,
 				09CE0B8A25045182007281AF /* AppKit.framework */,
 			);
 			name = Frameworks;
@@ -347,8 +351,8 @@
 				FAA5C0931B2D4013007DEBA1 /* TKRawDataRendition.m */,
 				FAB2053E1B4B427B00DDBBE1 /* TKRawPixelRendition.h */,
 				FAB2053F1B4B427B00DDBBE1 /* TKRawPixelRendition.m */,
-				09CE0B9125047988007281AF /* TKSVGRendition.h */,
-				09CE0B9225047988007281AF /* TKSVGRendition.m */,
+				09F90B6E250A95960053D4C1 /* TKSVGRendition.h */,
+				09F90B6F250A95970053D4C1 /* TKSVGRendition.m */,
 			);
 			name = Renditions;
 			sourceTree = "<group>";
@@ -493,6 +497,7 @@
 				FA606C671B2C9BF200F24960 /* TKColorRendition.h in Headers */,
 				FA606C581B2C35CF00F24960 /* TKRendition+Private.h in Headers */,
 				FA606C331B2C1D9400F24960 /* CUIMutableCommonAssetStorage.h in Headers */,
+				09F90B70250A95970053D4C1 /* TKSVGRendition.h in Headers */,
 				FA092C841B2C1C7600D04F6D /* ThemeKit.h in Headers */,
 				FAA5C06C1B2CD094007DEBA1 /* _CUIRawDataRendition.h in Headers */,
 				FA606C4E1B2C31C700F24960 /* TKRendition.h in Headers */,
@@ -512,7 +517,6 @@
 				FAA5C08B1B2CD81B007DEBA1 /* CUIPSDGradientStop.h in Headers */,
 				FAE5A2591B5194810025B40D /* TKVerifyTool.h in Headers */,
 				FA606C361B2C1E1000F24960 /* TKAssetStorage.h in Headers */,
-				09CE0B9325047988007281AF /* TKSVGRendition.h in Headers */,
 				FA4B1F1A233DB36C00F3B395 /* CUICatalog.h in Headers */,
 				09CE0B902504793D007281AF /* _CUIThemeSVGRendition.h in Headers */,
 				FAA54F5B1B2E0F6900EA15F2 /* TKGradient.h in Headers */,
@@ -546,7 +550,7 @@
 		FA092C751B2C1C7600D04F6D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1140;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Alex Zielenski";
 				TargetAttributes = {
 					FA092C7D1B2C1C7600D04F6D = {
@@ -591,7 +595,6 @@
 				FAE5A25A1B5194810025B40D /* TKVerifyTool.m in Sources */,
 				FAA54F641B2E1A4B00EA15F2 /* TKEffectPreset.m in Sources */,
 				FA606C5E1B2C882300F24960 /* TKElement.m in Sources */,
-				09CE0B9425047988007281AF /* TKSVGRendition.m in Sources */,
 				09FF665C2504839B0018AB6B /* SymRez.m in Sources */,
 				FAB205411B4B427B00DDBBE1 /* TKRawPixelRendition.m in Sources */,
 				FAA5C0951B2D4013007DEBA1 /* TKRawDataRendition.m in Sources */,
@@ -606,6 +609,7 @@
 				FAA5C0571B2CCF04007DEBA1 /* TKGradientRendition.m in Sources */,
 				FA606C481B2C2ADA00F24960 /* TKMutableAssetStorage.m in Sources */,
 				FA606C771B2C9E5400F24960 /* NSColor+CoreUI.m in Sources */,
+				09F90B71250A95970053D4C1 /* TKSVGRendition.m in Sources */,
 				FAA5C05F1B2CCFB5007DEBA1 /* TKEffectRendition.m in Sources */,
 				FA606C371B2C1E1000F24960 /* TKAssetStorage.m in Sources */,
 				FA59E4871B38402A00D03907 /* TKModelObject.m in Sources */,
@@ -641,6 +645,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -700,6 +705,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -731,7 +737,6 @@
 		FA092C951B2C1C7600D04F6D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -755,7 +760,6 @@
 		FA092C961B2C1C7600D04F6D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;

@@ -6,8 +6,10 @@
 //  Copyright © 2015 Alex Zielenski. All rights reserved.
 //
 
-#import <ThemeKit/TKRawDataRendition.h>
+#import <ThemeKit/TKRawPixelRendition.h>
 
-@interface TKPDFRendition : TKRawDataRendition
+@interface TKPDFRendition : TKRawPixelRendition 
+
 @property (nonatomic, strong) NSPDFImageRep *pdf;
+
 @end

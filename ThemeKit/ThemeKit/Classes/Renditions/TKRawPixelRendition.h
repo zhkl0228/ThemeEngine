@@ -9,5 +9,6 @@
 #import <ThemeKit/TKBitmapRendition.h>
 
 @interface TKRawPixelRendition : TKBitmapRendition
-
+@property (strong) NSMutableData *csiData;
+@property (strong) NSData *rawData;
 @end

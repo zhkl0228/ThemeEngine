@@ -215,4 +215,11 @@ struct _psdGradientColor {
     double alpha;
 };
 
+struct CUIRawPixelRendition {
+    uint32_t tag;
+    uint32_t version;
+    uint32_t rawDataLength;
+    uint8_t rawData[];
+} __attribute__((packed));
+
 #endif /* TKStructs_h */

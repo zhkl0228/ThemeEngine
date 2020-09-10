@@ -9,6 +9,8 @@
 #import "TKPDFRendition.h"
 #import "TKRendition+Private.h"
 
+@import PDFKit;
+
 @interface TKPDFRendition ()
 @end
 
@@ -18,6 +20,14 @@ static const void *TKPDFRenditionRawDataChangedContext = &TKPDFRenditionRawDataC
 
 - (instancetype)_initWithCUIRendition:(CUIThemeRendition *)rendition csiData:(NSData *)csiData key:(CUIRenditionKey *)key {
     if ((self = [super _initWithCUIRendition:rendition csiData:csiData key:key])) {
+        self.pdf = [[NSPDFImageRep alloc] initWithData:self.rawData];
+        NSImage *i = [[NSImage alloc] init];
+        [i addRepresentation:self.pdf];
+        
+        NSRect r = NSMakeRect(0, 0, self.pdf.size.width, self.pdf.size.height);
+        CGImageRef img = [i CGImageForProposedRect:&r context:nil hints:nil];
+        _image = [[NSBitmapImageRep alloc] initWithCGImage:img];
+        
         CGPDFDocumentRef *pdf = TKIvarPointer(rendition, "_pdfDocument");
         if (pdf != NULL)
             CGPDFDocumentRelease(*pdf);
@@ -28,6 +38,24 @@ static const void *TKPDFRenditionRawDataChangedContext = &TKPDFRenditionRawDataC
     return self;
 }
 
+- (NSBitmapImageRep *)image {
+    NSImage *i = [[NSImage alloc] init];
+    [i addRepresentation:self.pdf];
+    
+    NSRect r = NSMakeRect(0, 0, self.pdf.size.width, self.pdf.size.height);
+    CGImageRef img = [i CGImageForProposedRect:&r context:nil hints:nil];
+    return [[NSBitmapImageRep alloc] initWithCGImage:img];
+}
+
+- (void)setImage:(NSBitmapImageRep *)image {
+    NSImage *i = [[NSImage alloc] init];
+    [i addRepresentation:image];
+    PDFPage *p = [[PDFPage alloc] initWithImage:i];
+    PDFDocument *doc = [[PDFDocument alloc] init];
+    [doc insertPage:p atIndex:0];
+    self.pdf = [NSPDFImageRep imageRepWithData:doc.dataRepresentation];
+    self.rawData = self.pdf.PDFRepresentation;
+}
 
 - (void)computePreviewImageIfNecessary {
     if (self._previewImage)
@@ -41,18 +69,6 @@ static const void *TKPDFRenditionRawDataChangedContext = &TKPDFRenditionRawDataC
     } else {
         [super computePreviewImageIfNecessary];
     }
-}
-
-- (NSData *)rawData {
-    return self.pdf.PDFRepresentation;
-}
-
-- (void)setRawData:(NSData *)rawData {
-    self.pdf = [NSPDFImageRep imageRepWithData:rawData];
-}
-
-+ (NSSet *)keyPathsForValuesAffectingRawData {
-    return [NSSet setWithObject:@"pdf"];
 }
 
 @end

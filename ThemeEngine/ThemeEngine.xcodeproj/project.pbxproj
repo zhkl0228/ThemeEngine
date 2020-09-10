@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		098AE129250A8D3900BC44A1 /* TKSVGRendition+Pasteboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 098AE128250A8D3900BC44A1 /* TKSVGRendition+Pasteboard.m */; };
+		099E91212509D70C003AE113 /* CoreSVG.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 099E91202509D70C003AE113 /* CoreSVG.framework */; };
+		09D0CCC12509C0D500A1DCE5 /* PDFKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09D0CCC02509C0D500A1DCE5 /* PDFKit.framework */; };
 		09FF665F250486C50018AB6B /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA8313DB1B3B2218003D0F4A /* Sparkle.framework */; };
 		09FF6660250486C50018AB6B /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = FA8313DB1B3B2218003D0F4A /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FA092CED1B36822D0064DBC4 /* TERenditionsController+Dragging.m in Sources */ = {isa = PBXBuildFile; fileRef = FA092CEC1B36822D0064DBC4 /* TERenditionsController+Dragging.m */; };
@@ -94,6 +97,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		098AE127250A8D3900BC44A1 /* TKSVGRendition+Pasteboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "TKSVGRendition+Pasteboard.h"; path = "Pasteboard/TKSVGRendition+Pasteboard.h"; sourceTree = "<group>"; };
+		098AE128250A8D3900BC44A1 /* TKSVGRendition+Pasteboard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "TKSVGRendition+Pasteboard.m"; path = "Pasteboard/TKSVGRendition+Pasteboard.m"; sourceTree = "<group>"; };
+		099E91202509D70C003AE113 /* CoreSVG.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreSVG.framework; path = ../../../../../../System/Library/PrivateFrameworks/CoreSVG.framework; sourceTree = "<group>"; };
+		09D0CCC02509C0D500A1DCE5 /* PDFKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PDFKit.framework; path = System/Library/Frameworks/PDFKit.framework; sourceTree = SDKROOT; };
 		09FF665E2504860E0018AB6B /* ThemeEngine.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ThemeEngine.entitlements; sourceTree = "<group>"; };
 		FA092CEB1B36822D0064DBC4 /* TERenditionsController+Dragging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TERenditionsController+Dragging.h"; path = "Controllers/TERenditionsController+Dragging.h"; sourceTree = "<group>"; };
 		FA092CEC1B36822D0064DBC4 /* TERenditionsController+Dragging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TERenditionsController+Dragging.m"; path = "Controllers/TERenditionsController+Dragging.m"; sourceTree = "<group>"; };
@@ -229,7 +236,9 @@
 			files = (
 				FA3A2380214AAF6600E1A207 /* ThemeKit.framework in Frameworks */,
 				09FF665F250486C50018AB6B /* Sparkle.framework in Frameworks */,
+				09D0CCC12509C0D500A1DCE5 /* PDFKit.framework in Frameworks */,
 				FA81475D1B2D95D100881F36 /* Quartz.framework in Frameworks */,
+				099E91212509D70C003AE113 /* CoreSVG.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,6 +257,8 @@
 		FA3A237E214AAF6600E1A207 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				099E91202509D70C003AE113 /* CoreSVG.framework */,
+				09D0CCC02509C0D500A1DCE5 /* PDFKit.framework */,
 				FA3A237F214AAF6600E1A207 /* ThemeKit.framework */,
 			);
 			name = Frameworks;
@@ -269,6 +280,8 @@
 				FAB6EB7E1B375A9C00D914F4 /* TKGradientRendition+Pasteboard.m */,
 				FAB6EB801B375AAA00D914F4 /* TKRawDataRendition+Pasteboard.h */,
 				FAB6EB811B375AAA00D914F4 /* TKRawDataRendition+Pasteboard.m */,
+				098AE127250A8D3900BC44A1 /* TKSVGRendition+Pasteboard.h */,
+				098AE128250A8D3900BC44A1 /* TKSVGRendition+Pasteboard.m */,
 				FAC2D3761B37B3FE0015BF7F /* TKEffectPreset+Pasteboard.h */,
 				FAC2D3771B37B3FE0015BF7F /* TKEffectPreset+Pasteboard.m */,
 				FAC2D3791B37B8840015BF7F /* NSColor+Pasteboard.h */,
@@ -551,6 +564,7 @@
 				FAA54F6C1B2E212E00EA15F2 /* RBLClipView.m in Sources */,
 				FAB6EB7C1B375A8C00D914F4 /* TKColorRendition+Pasteboard.m in Sources */,
 				FA26627F1B3F55FA00D97439 /* TEPreferencesController.m in Sources */,
+				098AE129250A8D3900BC44A1 /* TKSVGRendition+Pasteboard.m in Sources */,
 				FAB6EB7F1B375A9C00D914F4 /* TKGradientRendition+Pasteboard.m in Sources */,
 				FA21F87D1B2E95710094202A /* TKRendition+Filtering.m in Sources */,
 				FAEA99891B36587D00EEA486 /* TEBackgroundColorView.m in Sources */,
@@ -748,6 +762,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 113;
 				DEVELOPMENT_TEAM = G9T88PYL48;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -784,6 +799,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 113;
 				DEVELOPMENT_TEAM = G9T88PYL48;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
