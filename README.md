@@ -13,8 +13,11 @@ You will need to follow the steps below:
 
 1. Disable SIP and authenticated-root:
 In recovery mode, open Terminal and enter
+
 `csrutil disable`
+
 `csrutil authenticated-root disable`
+
 Then reboot into macOS.
 
 2. Identify the System Volume Disk Device Name
