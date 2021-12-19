@@ -9,9 +9,7 @@
 #import <ThemeKit/TKRendition.h>
 extern NSString *const TKUTITypeCoreAnimationArchive;
 
-@interface TKRawDataRendition : TKRendition {
-    NSData *_rawData;
-}
+@interface TKRawDataRendition : TKRendition
 @property (nonatomic, strong) NSData *rawData;
 @property (nonatomic, strong) CALayer *rootLayer;
 

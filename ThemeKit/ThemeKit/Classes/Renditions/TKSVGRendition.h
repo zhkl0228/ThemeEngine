@@ -5,9 +5,9 @@
 //  Created by Jeremy on 9/5/20.
 //
 
-#import <ThemeKit/TKRawDataRendition.h>
+#import <ThemeKit/TKRendition.h>
 
-@interface TKSVGRendition : TKRawDataRendition
-
+@interface TKSVGRendition : TKRendition
+@property (nonatomic, strong) NSData *rawData;
 @end
 

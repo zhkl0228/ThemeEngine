@@ -307,6 +307,7 @@ BOOL (*CUIBOMTreeIteratorIsAtEnd)(BOMTreeIteratorRef);
     CUIBOMTreeIteratorKeySize = sr_resolve_symbol(sr_coreui, "_BOMTreeIteratorKeySize");
     CUIBOMTreeIteratorIsAtEnd = sr_resolve_symbol(sr_coreui, "_BOMTreeIteratorIsAtEnd");
     CUIBOMTreeIteratorFree = sr_resolve_symbol(sr_coreui, "_BOMTreeIteratorFree");
+    free(sr_coreui);
 }
 
 @end

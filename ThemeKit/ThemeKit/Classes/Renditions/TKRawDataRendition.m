@@ -8,14 +8,18 @@
 
 #import "TKRawDataRendition.h"
 #import "TKRendition+Private.h"
+#import <SymRez.h>
+
 @import QuartzCore.CATransaction;
 
-extern NSData *CAEncodeLayerTree(CALayer *layer);
+NSData *(*_CUIUncompressDataWithLZFSE)(NSData*);
+NSData *(*_CUICompressedDataWithLZFSE)(NSData*);
 
 NSString *const TKUTITypeCoreAnimationArchive = @"com.apple.coreanimation-archive";
 
 @interface TKRawDataRendition () {
     CALayer *_rootLayer;
+    unsigned int _version;
 }
 @end
 
@@ -26,11 +30,12 @@ NSString *const TKUTITypeCoreAnimationArchive = @"com.apple.coreanimation-archiv
     if ((self = [super _initWithCUIRendition:rendition csiData:csiData key:key])) {
         unsigned int listOffset = offsetof(struct csiheader, infolistLength);
         unsigned int listLength = 0;
+
         [csiData getBytes:&listLength range:NSMakeRange(listOffset, sizeof(listLength))];
         listOffset += listLength + sizeof(unsigned int) * 4;
         
-        unsigned int type = 0;
-        [csiData getBytes:&type range:NSMakeRange(listOffset, sizeof(type))];
+        _version = 0;
+        [csiData getBytes:&_version range:NSMakeRange(offsetof(struct csiheader, version), sizeof(_version))];
         
         listOffset += 8;
         unsigned int dataLength = 0;
@@ -39,10 +44,14 @@ NSString *const TKUTITypeCoreAnimationArchive = @"com.apple.coreanimation-archiv
         listOffset += sizeof(dataLength);
         _rawData = [csiData subdataWithRange:NSMakeRange(listOffset, dataLength)];
         
-        // release raw data off of rendition to save ram...
+        if (_version != 0) {
+            _rawData = _CUIUncompressDataWithLZFSE(_rawData);
+        }
+        
+//         release raw data off of rendition to save ram...
         if ([rendition isKindOfClass:[TKClass(_CUIRawDataRendition) class]]) {
             CFDataRef *dataBytes = (CFDataRef *)TKIvarPointer(self.rendition, "_dataBytes");
-            
+
             // use __bridge_transfer to transfer ownership to ARC so it releases it at the end
             // of this scope
             CFRelease(*dataBytes);
@@ -130,7 +139,12 @@ NSString *const TKUTITypeCoreAnimationArchive = @"com.apple.coreanimation-archiv
 }
 
 - (CSIGenerator *)generator {
-    CSIGenerator *generator = [[CSIGenerator alloc] initWithRawData:self.rawData
+    NSData *saveData = self.rawData;
+    if (_version != 0) {
+        saveData = _CUICompressedDataWithLZFSE(self.rawData);
+    }
+    
+    CSIGenerator *generator = [[CSIGenerator alloc] initWithRawData:saveData
                                                         pixelFormat:self.pixelFormat
                                                              layout:self.layout];
     
@@ -140,6 +154,13 @@ NSString *const TKUTITypeCoreAnimationArchive = @"com.apple.coreanimation-archiv
 - (void)setUtiType:(NSString *)utiType {
     [super setUtiType:utiType];
     self._previewImage = nil;
+}
+
++ (void)load {
+    symrez_t sr_coreui = symrez_new("CoreUI");
+    _CUIUncompressDataWithLZFSE = sr_resolve_symbol(sr_coreui, "_CUIUncompressDataWithLZFSE");
+    _CUICompressedDataWithLZFSE = sr_resolve_symbol(sr_coreui, "_CUICompressedDataWithLZFSE");
+    free(sr_coreui);
 }
 
 @end

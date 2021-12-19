@@ -35,18 +35,16 @@ CGSVGDocumentRef (*TKCGSVGDocumentCreateFromData)(CFDataRef, CFDictionaryRef);
 
 @interface TKSVGRendition ()
 @property CGSVGDocumentRef svgDocument;
-@property (strong) NSMutableData *rawSvgData;
-@property (strong) NSMutableData *csiData;
 @end
 
 @implementation TKSVGRendition
+
 - (instancetype)_initWithCUIRendition:(CUIThemeRendition *)rendition csiData:(NSData *)csiData key:(CUIRenditionKey *)key {
     if ((self = [super _initWithCUIRendition:rendition csiData:csiData key:key])) {
-        self.csiData = [csiData mutableCopy];
         self.svgDocument = ((CGSVGDocumentRef (*)(id, SEL)) objc_msgSend)(rendition, sel_getUid("svgDocument"));
         CFMutableDataRef svgData = (__bridge CFMutableDataRef)([NSMutableData data]);
         TKCGSVGDocumentWriteToData(self.svgDocument, svgData, NULL);
-        self.rawSvgData = (__bridge NSMutableData *)(svgData);
+        _rawData = (__bridge NSData *)(svgData);
         self.utiType = (__bridge_transfer NSString *)kUTTypeScalableVectorGraphics;
     }
     return self;
@@ -55,7 +53,6 @@ CGSVGDocumentRef (*TKCGSVGDocumentCreateFromData)(CFDataRef, CFDictionaryRef);
 - (void)computePreviewImageIfNecessary {
     if (self._previewImage)
         return;
-    
     
     id svgImageRep = ((id (*)(id, SEL))objc_msgSend)(objc_lookUpClass("_NSSVGImageRep"), sel_getUid("alloc"));
     id rep = ((id (*)(id, SEL, CGSVGDocumentRef))objc_msgSend)(svgImageRep, sel_getUid("initWithSVGDocument:"), self.svgDocument);
@@ -73,6 +70,14 @@ CGSVGDocumentRef (*TKCGSVGDocumentCreateFromData)(CFDataRef, CFDictionaryRef);
 
 + (NSSet *)keyPathsForValuesAffectingRawData {
     return [NSSet setWithObject:@"svg"];
+}
+
+- (CSIGenerator *)generator {
+    CSIGenerator *generator = [[CSIGenerator alloc] initWithRawData:_rawData
+                                                        pixelFormat:self.pixelFormat
+                                                             layout:self.layout];
+    
+    return generator;
 }
 
 + (void)load {

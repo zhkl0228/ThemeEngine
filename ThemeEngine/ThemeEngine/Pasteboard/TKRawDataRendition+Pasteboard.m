@@ -46,9 +46,11 @@ NSString *const TERawDataPasteboardType = @"com.alexzielenski.themekit.rendition
 }
 
 - (BOOL)readFromPasteboardItem:(NSPasteboardItem *)item {
-    NSString *available = [item availableTypeFromArray:@[ TERawDataPasteboardType, self.mainDataType ]];
+    NSString *available = [item availableTypeFromArray:@[ TERawDataPasteboardType, self.mainDataType, (__bridge NSString *)kUTTypeFileURL, (__bridge NSString *)kUTTypeURL ]];
     if (available != nil) {
-        NSData *data = [item dataForType:available];
+        NSString *str = [item stringForType:available];
+
+        NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:str]];
         if (data) {
             self.rawData = data;
             return YES;
