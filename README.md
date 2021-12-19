@@ -13,8 +13,11 @@ You will need to follow the steps below:
 
 1. Disable SIP and authenticated-root:
 In recovery mode, open Terminal and enter
+
 `csrutil disable`
+
 `csrutil authenticated-root disable`
+
 Then reboot into macOS.
 
 2. Identify the System Volume Disk Device Name
@@ -30,7 +33,10 @@ To get the actual name of the system volume disk, remove the final “sX” from
 
 3. Mount a Live Version of the System Volume
 Run the mount command in Terminal to mount the system volume disk to a temporary location. When running the mount command, always include the nobrowse mount option to prevent Spotlight from indexing the volume.
+
 `mkdir /Users/<YOUR USER NAME>/livemount`
+
 `sudo mount -o nobrowse -t apfs  /dev/disk4s5 /Users/<YOUR USER NAME>/livemount`
 
 4. Edit the files from `/Users/<YOUR USER NAME>/livemount`
+5. Bless your livemount with `sudo bless --mount /Users/<YOUR USER NAME>/livemount --bootefi --create-snapshot`
