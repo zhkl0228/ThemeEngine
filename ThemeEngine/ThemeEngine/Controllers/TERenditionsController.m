@@ -163,7 +163,7 @@ static const void *PREVIEWIMAGECHANGED = &PREVIEWIMAGECHANGED;
 
 - (IBAction)importMica:(id)sender {
     NSOpenPanel *panel = [NSOpenPanel openPanel];
-    panel.allowedFileTypes = @[@"caar"];
+    panel.allowedFileTypes = @[@"caar", @"caml"];
     panel.allowsOtherFileTypes = NO;
     panel.allowsMultipleSelection = NO;
     if ([panel runModal] == NSModalResponseOK) {

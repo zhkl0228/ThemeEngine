@@ -56,6 +56,8 @@
 - (instancetype)initWithCanvasSize:(CGSize)arg1 sliceCount:(unsigned int)arg2 layout:(short)arg3;
 
 - (NSData *)CSIRepresentationWithCompression:(BOOL)compress;
+- (void)setCompressionType:(unsigned long long)type;
+- (unsigned long long)compressionType;
 
 - (void)addLayerReference:(id)arg1;
 - (void)addMetrics:(CUIMetrics)arg1;

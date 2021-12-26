@@ -98,6 +98,8 @@
 - (BOOL)isInternalLink;
 - (CSIPixelFormat)pixelFormat;
 
+- (unsigned int)renditionFlags;
+
 - (instancetype)initWithCSIData:(NSData *)arg1 forKey:(const struct renditionkeytoken *)arg2 artworkStatus:(long long)arg3;
 - (instancetype)initWithCSIData:(NSData *)arg1 forKey:(const struct renditionkeytoken *)arg2;
 
