@@ -139,6 +139,7 @@ symrez_t symrez_new(const char *image_name) {
     }
     
     if(find_image_and_slide(symrez, image_name) != 1) {
+        free(symrez);
         return NULL;
     }
     

@@ -32,7 +32,7 @@ static const void *TKPDFRenditionRawDataChangedContext = &TKPDFRenditionRawDataC
         if (pdf != NULL)
             CGPDFDocumentRelease(*pdf);
         
-        *pdf = NULL;
+        pdf = NULL;
         self.utiType = (__bridge_transfer NSString *)kUTTypePDF;
     }
     return self;

@@ -175,13 +175,10 @@ BOOL (*CUIBOMTreeIteratorIsAtEnd)(BOMTreeIteratorRef);
     
     BOMStorageRef stor = BOMStorageOpen(self.filePath.UTF8String, false);
     BOMTreeRef color_tree = BOMTreeOpenWithName(stor, "COLORS", false);
-//    if(bomTree == NULL)
-//        return;
-//
-//
-//    BOMTreeRef color_tree = TKIvar(self.storage, BOMTreeRef, _colordb);
-    if (color_tree == NULL)
+    if(color_tree == NULL) {
+        BOMStorageFree(stor);
         return;
+    }
     
     int num_colors = BOMTreeCount(color_tree);
     NSLog(@"Found %d colors", num_colors);
@@ -202,6 +199,7 @@ BOOL (*CUIBOMTreeIteratorIsAtEnd)(BOMTreeIteratorRef);
         BOMTreeIteratorNext(iterator);
     }
     BOMTreeIteratorFree(iterator);
+    BOMTreeFree(color_tree);
     BOMStorageFree(stor);
 }
 

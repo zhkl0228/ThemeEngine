@@ -177,6 +177,7 @@
         positions[1].y += rep.pixelsHigh / 2 - position.y / 2 - 6;
         
         CTFontDrawGlyphs(font, glyphs, positions, 2, ctx.graphicsPort);
+        CFRelease(font);
     });
     
     return rep;

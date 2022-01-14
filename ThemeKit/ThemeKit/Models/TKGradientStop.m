@@ -84,7 +84,7 @@
 - (instancetype)init {
     if ((self = [super init])) {
         self.colorStop = YES;
-        struct _psdGradientColor color;
+        struct _psdGradientColor color = { 0 };
         color.alpha = 1.0;
         self.backingStop = [[TKClass(CUIPSDGradientColorStop) alloc] initWithLocation:0.0 gradientColor:color];
     }
