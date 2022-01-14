@@ -13,6 +13,7 @@
 #import "TKColorRendition.h"
 #import "TKGradientRendition.h"
 #import "TKBitmapRendition.h"
+#import "TKIconRendition.h"
 #import "TKEffectRendition.h"
 #import "TKRawDataRendition.h"
 #import "TKPDFRendition.h"
@@ -53,7 +54,9 @@ static const void *TKRenditionChangeContext = &TKRenditionChangeContext;
         [rendition isKindOfClass:TKClass(_CUIInternalLinkRendition)] ||
         [rendition isKindOfClass:TKClass(_CUIThemePixelRendition)]) {
         return [TKBitmapRendition class];
-        
+    } else if ([rendition isKindOfClass:TKClass(_CUIThemeMultisizeImageSetRendition)]) {
+        //return [TKIconRendition class];
+        return NULL;
     } else if ([rendition isKindOfClass:TKClass(_CUIThemeEffectRendition)]) {
         return [TKEffectRendition class];
         

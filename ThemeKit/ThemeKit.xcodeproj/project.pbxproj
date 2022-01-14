@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0940F3532779272800753E02 /* _CUIThemeMultisizeImageSetRendition.h in Headers */ = {isa = PBXBuildFile; fileRef = 0940F3522779272800753E02 /* _CUIThemeMultisizeImageSetRendition.h */; };
+		0940F356277928D100753E02 /* TKIconRendition.h in Headers */ = {isa = PBXBuildFile; fileRef = 0940F354277928D100753E02 /* TKIconRendition.h */; };
+		0940F357277928D100753E02 /* TKIconRendition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0940F355277928D100753E02 /* TKIconRendition.m */; };
 		09CE0B8B25045182007281AF /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09CE0B8A25045182007281AF /* AppKit.framework */; };
 		09CE0B902504793D007281AF /* _CUIThemeSVGRendition.h in Headers */ = {isa = PBXBuildFile; fileRef = 09CE0B8F2504793D007281AF /* _CUIThemeSVGRendition.h */; };
 		09D0CCC32509C0FA00A1DCE5 /* PDFKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09D0CCC22509C0FA00A1DCE5 /* PDFKit.framework */; };
@@ -106,6 +109,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0940F3522779272800753E02 /* _CUIThemeMultisizeImageSetRendition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _CUIThemeMultisizeImageSetRendition.h; path = Renditions/_CUIThemeMultisizeImageSetRendition.h; sourceTree = "<group>"; };
+		0940F354277928D100753E02 /* TKIconRendition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TKIconRendition.h; path = Classes/Renditions/TKIconRendition.h; sourceTree = "<group>"; };
+		0940F355277928D100753E02 /* TKIconRendition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TKIconRendition.m; path = Classes/Renditions/TKIconRendition.m; sourceTree = "<group>"; };
 		09CE0B8A25045182007281AF /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		09CE0B8F2504793D007281AF /* _CUIThemeSVGRendition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _CUIThemeSVGRendition.h; path = Renditions/_CUIThemeSVGRendition.h; sourceTree = "<group>"; };
 		09D0CCC22509C0FA00A1DCE5 /* PDFKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PDFKit.framework; path = System/Library/Frameworks/PDFKit.framework; sourceTree = SDKROOT; };
@@ -345,6 +351,8 @@
 				FAA5C0591B2CCF14007DEBA1 /* TKBitmapRendition.m */,
 				FAA5C05C1B2CCFB5007DEBA1 /* TKEffectRendition.h */,
 				FAA5C05D1B2CCFB5007DEBA1 /* TKEffectRendition.m */,
+				0940F354277928D100753E02 /* TKIconRendition.h */,
+				0940F355277928D100753E02 /* TKIconRendition.m */,
 				FAA5C08E1B2D3FF0007DEBA1 /* TKPDFRendition.h */,
 				FAA5C08F1B2D3FF0007DEBA1 /* TKPDFRendition.m */,
 				FAA5C0921B2D4013007DEBA1 /* TKRawDataRendition.h */,
@@ -402,6 +410,7 @@
 				FAA5C0651B2CD094007DEBA1 /* _CUIRawPixelRendition.h */,
 				FAA5C0661B2CD094007DEBA1 /* _CUIThemeEffectRendition.h */,
 				FAA5C0671B2CD094007DEBA1 /* _CUIThemeGradientRendition.h */,
+				0940F3522779272800753E02 /* _CUIThemeMultisizeImageSetRendition.h */,
 				FAA5C0681B2CD094007DEBA1 /* _CUIThemePixelRendition.h */,
 				09CE0B8F2504793D007281AF /* _CUIThemeSVGRendition.h */,
 				FAA5C07B1B2CD55D007DEBA1 /* CUIRenditions.h */,
@@ -475,8 +484,10 @@
 				FA80CDFC1B309542005E5DD2 /* TKGradientStop.h in Headers */,
 				FA606C521B2C320900F24960 /* CUIThemeRendition.h in Headers */,
 				FAA5C0851B2CD81B007DEBA1 /* CUIPSDGradient.h in Headers */,
+				0940F356277928D100753E02 /* TKIconRendition.h in Headers */,
 				FAA5C0561B2CCF04007DEBA1 /* TKGradientRendition.h in Headers */,
 				FA606C311B2C1D9400F24960 /* CSIGenerator.h in Headers */,
+				0940F3532779272800753E02 /* _CUIThemeMultisizeImageSetRendition.h in Headers */,
 				FA606C3D1B2C213A00F24960 /* TKStructs.h in Headers */,
 				FA606C541B2C328C00F24960 /* TKTypes.h in Headers */,
 				FAA54F631B2E1A4B00EA15F2 /* TKEffectPreset.h in Headers */,
@@ -599,6 +610,7 @@
 				FAB205411B4B427B00DDBBE1 /* TKRawPixelRendition.m in Sources */,
 				FAA5C0951B2D4013007DEBA1 /* TKRawDataRendition.m in Sources */,
 				FAA54F5C1B2E0F6900EA15F2 /* TKGradient.m in Sources */,
+				0940F357277928D100753E02 /* TKIconRendition.m in Sources */,
 				FA606C4F1B2C31C700F24960 /* TKRendition.m in Sources */,
 				FA606C641B2C960500F24960 /* TKHelpers.m in Sources */,
 				FAA5C0911B2D3FF0007DEBA1 /* TKPDFRendition.m in Sources */,

@@ -156,6 +156,7 @@ BOOL (*CUIBOMTreeIteratorIsAtEnd)(BOMTreeIteratorRef);
                         return;
                     } else {
                         rendition = [TKRendition renditionWithCUIRendition:cui csiData:csiData key:key];
+                        if (!rendition) return;
                     }
                 }
                 [weakSelf _addRendition: rendition];
