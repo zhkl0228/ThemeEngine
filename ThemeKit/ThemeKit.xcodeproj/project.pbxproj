@@ -10,9 +10,12 @@
 		0940F3532779272800753E02 /* _CUIThemeMultisizeImageSetRendition.h in Headers */ = {isa = PBXBuildFile; fileRef = 0940F3522779272800753E02 /* _CUIThemeMultisizeImageSetRendition.h */; };
 		0940F356277928D100753E02 /* TKIconRendition.h in Headers */ = {isa = PBXBuildFile; fileRef = 0940F354277928D100753E02 /* TKIconRendition.h */; };
 		0940F357277928D100753E02 /* TKIconRendition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0940F355277928D100753E02 /* TKIconRendition.m */; };
+		09B23982279223930061258A /* _CUIThemeColorRendition.h in Headers */ = {isa = PBXBuildFile; fileRef = 09B23981279223920061258A /* _CUIThemeColorRendition.h */; };
 		09CE0B8B25045182007281AF /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09CE0B8A25045182007281AF /* AppKit.framework */; };
 		09CE0B902504793D007281AF /* _CUIThemeSVGRendition.h in Headers */ = {isa = PBXBuildFile; fileRef = 09CE0B8F2504793D007281AF /* _CUIThemeSVGRendition.h */; };
 		09D0CCC32509C0FA00A1DCE5 /* PDFKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09D0CCC22509C0FA00A1DCE5 /* PDFKit.framework */; };
+		09D4295B279540E80054513E /* TKThemeColorRendition.h in Headers */ = {isa = PBXBuildFile; fileRef = 09D42959279540E80054513E /* TKThemeColorRendition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		09D4295C279540E80054513E /* TKThemeColorRendition.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D4295A279540E80054513E /* TKThemeColorRendition.m */; };
 		09F90B70250A95970053D4C1 /* TKSVGRendition.h in Headers */ = {isa = PBXBuildFile; fileRef = 09F90B6E250A95960053D4C1 /* TKSVGRendition.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		09F90B71250A95970053D4C1 /* TKSVGRendition.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F90B6F250A95970053D4C1 /* TKSVGRendition.m */; };
 		09FF665C2504839B0018AB6B /* SymRez.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FF665A2504839B0018AB6B /* SymRez.m */; };
@@ -112,9 +115,12 @@
 		0940F3522779272800753E02 /* _CUIThemeMultisizeImageSetRendition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _CUIThemeMultisizeImageSetRendition.h; path = Renditions/_CUIThemeMultisizeImageSetRendition.h; sourceTree = "<group>"; };
 		0940F354277928D100753E02 /* TKIconRendition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TKIconRendition.h; path = Classes/Renditions/TKIconRendition.h; sourceTree = "<group>"; };
 		0940F355277928D100753E02 /* TKIconRendition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TKIconRendition.m; path = Classes/Renditions/TKIconRendition.m; sourceTree = "<group>"; };
+		09B23981279223920061258A /* _CUIThemeColorRendition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _CUIThemeColorRendition.h; path = Renditions/_CUIThemeColorRendition.h; sourceTree = "<group>"; };
 		09CE0B8A25045182007281AF /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		09CE0B8F2504793D007281AF /* _CUIThemeSVGRendition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _CUIThemeSVGRendition.h; path = Renditions/_CUIThemeSVGRendition.h; sourceTree = "<group>"; };
 		09D0CCC22509C0FA00A1DCE5 /* PDFKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PDFKit.framework; path = System/Library/Frameworks/PDFKit.framework; sourceTree = SDKROOT; };
+		09D42959279540E80054513E /* TKThemeColorRendition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TKThemeColorRendition.h; path = Classes/Renditions/TKThemeColorRendition.h; sourceTree = "<group>"; };
+		09D4295A279540E80054513E /* TKThemeColorRendition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TKThemeColorRendition.m; path = Classes/Renditions/TKThemeColorRendition.m; sourceTree = "<group>"; };
 		09F90B6E250A95960053D4C1 /* TKSVGRendition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TKSVGRendition.h; path = Classes/Renditions/TKSVGRendition.h; sourceTree = "<group>"; };
 		09F90B6F250A95970053D4C1 /* TKSVGRendition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TKSVGRendition.m; path = Classes/Renditions/TKSVGRendition.m; sourceTree = "<group>"; };
 		09FF665A2504839B0018AB6B /* SymRez.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SymRez.m; path = SymRez/SymRez.m; sourceTree = "<group>"; };
@@ -345,6 +351,8 @@
 				FA606C4D1B2C31C700F24960 /* TKRendition.m */,
 				FA606C651B2C9BF200F24960 /* TKColorRendition.h */,
 				FA606C661B2C9BF200F24960 /* TKColorRendition.m */,
+				09D42959279540E80054513E /* TKThemeColorRendition.h */,
+				09D4295A279540E80054513E /* TKThemeColorRendition.m */,
 				FAA5C0541B2CCF04007DEBA1 /* TKGradientRendition.h */,
 				FAA5C0551B2CCF04007DEBA1 /* TKGradientRendition.m */,
 				FAA5C0581B2CCF14007DEBA1 /* TKBitmapRendition.h */,
@@ -408,6 +416,7 @@
 				FAA5C0631B2CD094007DEBA1 /* _CUIPDFRendition.h */,
 				FAA5C0641B2CD094007DEBA1 /* _CUIRawDataRendition.h */,
 				FAA5C0651B2CD094007DEBA1 /* _CUIRawPixelRendition.h */,
+				09B23981279223920061258A /* _CUIThemeColorRendition.h */,
 				FAA5C0661B2CD094007DEBA1 /* _CUIThemeEffectRendition.h */,
 				FAA5C0671B2CD094007DEBA1 /* _CUIThemeGradientRendition.h */,
 				0940F3522779272800753E02 /* _CUIThemeMultisizeImageSetRendition.h */,
@@ -496,6 +505,7 @@
 				FA606C5D1B2C882300F24960 /* TKElement.h in Headers */,
 				FAA5C0871B2CD81B007DEBA1 /* CUIPSDGradientDoubleColorStop.h in Headers */,
 				FAA5C0791B2CD30E007DEBA1 /* CUIThemeGradient.h in Headers */,
+				09B23982279223930061258A /* _CUIThemeColorRendition.h in Headers */,
 				FAA5C06B1B2CD094007DEBA1 /* _CUIPDFRendition.h in Headers */,
 				FA59E4861B38402A00D03907 /* TKModelObject.h in Headers */,
 				FAA5C0701B2CD094007DEBA1 /* _CUIThemePixelRendition.h in Headers */,
@@ -510,6 +520,7 @@
 				FA606C331B2C1D9400F24960 /* CUIMutableCommonAssetStorage.h in Headers */,
 				09F90B70250A95970053D4C1 /* TKSVGRendition.h in Headers */,
 				FA092C841B2C1C7600D04F6D /* ThemeKit.h in Headers */,
+				09D4295B279540E80054513E /* TKThemeColorRendition.h in Headers */,
 				FAA5C06C1B2CD094007DEBA1 /* _CUIRawDataRendition.h in Headers */,
 				FA606C4E1B2C31C700F24960 /* TKRendition.h in Headers */,
 				FAA5C08A1B2CD81B007DEBA1 /* CUIPSDGradientOpacityStop.h in Headers */,
@@ -625,6 +636,7 @@
 				FAA5C05F1B2CCFB5007DEBA1 /* TKEffectRendition.m in Sources */,
 				FA606C371B2C1E1000F24960 /* TKAssetStorage.m in Sources */,
 				FA59E4871B38402A00D03907 /* TKModelObject.m in Sources */,
+				09D4295C279540E80054513E /* TKThemeColorRendition.m in Sources */,
 				FA80CDFD1B309542005E5DD2 /* TKGradientStop.m in Sources */,
 				FA606C681B2C9BF200F24960 /* TKColorRendition.m in Sources */,
 			);

@@ -163,7 +163,9 @@ typedef NS_ENUM(NSUInteger, CoreThemeType) {
     CoreThemeTypeMulitSizeImage      = 1010,
     CoreThemeTypeSVG                 = 1017,
     CoreThemeTypeColor               = -1001, // This is a fake type
-    CoreThemeTypeAssetPack           = 1004  // ZZZPackedAssets-1.0.0/2.0.0 I've seen subtype 10
+    CoreThemeTypeAssetPack           = 1004,  // ZZZPackedAssets-1.0.0/2.0.0 I've seen subtype 10
+    CoreThemeTypeThemeColor          = 1009,
+    CoreThemeTypeMulitsizeImage      = 1010, // ICNS 
 };
 
 typedef NS_ENUM(NSUInteger, TKEXIFOrientation) {
