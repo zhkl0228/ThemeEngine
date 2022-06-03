@@ -14,7 +14,6 @@
 #import <CoreUI/Renditions/_CUIPDFRendition.h>
 #import <CoreUI/Renditions/_CUIRawDataRendition.h>
 #import <CoreUI/Renditions/_CUIRawPixelRendition.h>
-#import <CoreUI/Renditions/_CUIThemeColorRendition.h>
 #import <CoreUI/Renditions/_CUIThemeEffectRendition.h>
 #import <CoreUI/Renditions/_CUIThemeGradientRendition.h>
 #import <CoreUI/Renditions/_CUIThemeMultisizeImageSetRendition.h>

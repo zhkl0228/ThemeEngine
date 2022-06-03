@@ -21,8 +21,7 @@
 }
 
 - (NSStackViewVisibilityPriority)visibilityPriorityForInspectedObjects:(NSArray *)objects {
-    if (objects.count == 0) return NSStackViewVisibilityPriorityNotVisible;
-    return ![[objects firstObject] isKindOfClass:[TKColorRendition class]] ?
+    return ![[objects valueForKeyPath:@"className"] containsObject:[TKColorRendition className]] ?
     NSStackViewVisibilityPriorityMustHold : NSStackViewVisibilityPriorityNotVisible;
 }
 

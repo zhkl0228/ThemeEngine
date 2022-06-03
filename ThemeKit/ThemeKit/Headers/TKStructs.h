@@ -222,17 +222,4 @@ struct CUIRawPixelRendition {
     uint8_t rawData[];
 } __attribute__((packed));
 
-typedef struct _csicolor {
-    uint32_t magic; // 'COLR'
-    uint32_t unknown; // Always 1?
-    uint8_t colorspaceId; // use with _colorSpaceWithID:
-    uint8_t replaceSystemColor;
-    uint16_t unknown2; // always 0..
-    uint32_t unknown3; // always 4?
-    CGFloat red;
-    CGFloat green;
-    CGFloat blue;
-    CGFloat alpha;
-} csicolor;
-
 #endif /* TKStructs_h */

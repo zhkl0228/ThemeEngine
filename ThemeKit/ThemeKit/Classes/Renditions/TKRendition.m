@@ -11,7 +11,6 @@
 #import "TKAssetStorage+Private.h"
 
 #import "TKColorRendition.h"
-#import "TKThemeColorRendition.h"
 #import "TKGradientRendition.h"
 #import "TKBitmapRendition.h"
 #import "TKIconRendition.h"
@@ -73,8 +72,6 @@ static const void *TKRenditionChangeContext = &TKRenditionChangeContext;
         return [TKRawPixelRendition class];
     } else if ([rendition isKindOfClass:TKClass(_CUIThemeSVGRendition)]) {
         return [TKSVGRendition class];
-    } else if ([rendition isKindOfClass:TKClass(_CUIThemeColorRendition)]) {
-        return [TKThemeColorRendition class];
     }
     
     NSLog(@"Unknown class for rendition: %@", rendition);
